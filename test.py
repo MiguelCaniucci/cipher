@@ -8,14 +8,14 @@ def euclidian_gcd(a, b):
     if a == 0 :   
         return b,0,1
 
-    gcd,x1,y1 = egcd(b%a, a)    
+    gcd,x1,y1 = euclidian_gcd(b%a, a)    
     x = y1 - (b//a) * x1  
     y = x1  
-return gcd,x,y 
+    return gcd,x,y 
 
 def generate_key(p, q):
     n = p*q
-return n
+    return n
 
 def encryption(m, n):
     message = m
@@ -70,7 +70,7 @@ def encryption(m, n):
         
     print("Encrypted binary m = " + str(M_encrf))
     
-return message_encr, l
+    return message_encr, l
 
 def decryption(m, p, q, l):
     n = p*q
@@ -84,7 +84,7 @@ def decryption(m, p, q, l):
     dq = (int((q+1)/4)**(t))%(q-1)
     up = (xi**dp)%p
     uq = (xi**dq)%q
-    gcd, rp, rq = egcd(p, q)
+    gcd, rp, rq = euclidian_gcd(p, q)
 
     x0 = (uq*rp*p+up*rq*q)%n
         
